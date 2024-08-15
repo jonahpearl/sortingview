@@ -1,6 +1,5 @@
 {
   "name": "@fi-sci/figurl-sortingview",
-  "private": false,
   "version": "12.0.12",
   "scripts": {
     "dev": "vite --port 3000",
