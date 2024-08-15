@@ -3,7 +3,7 @@ import { matrix } from "mathjs"
 import { useMemo } from 'react'
 import { AffineTransform } from '../../view-unit-similarity-matrix'
 import { LayoutMode, PixelSpaceElectrode } from './sharedDrawnComponents/ElectrodeGeometry'
-
+import { unitToGrayColorMap } from '../../view-units-table/unitColors'; // Adjust the path as necessary
 
 export type WaveformColors = {
     base: string
@@ -146,8 +146,10 @@ const paint = (ctxt: CanvasRenderingContext2D, props: PaintProps) => {
         const pLower = pixelSpacePathsLower[ii]
         const pUpper = pixelSpacePathsUpper[ii]
 
-        ctxt.fillStyle = '#dddddd'
-        ctxt.strokeStyle = '#bbbbbb'
+        // ctxt.fillStyle = '#dddddd'
+        // ctxt.strokeStyle = '#bbbbbb'
+        ctxt.fillStyle = unitToGrayColorMap[p.color] || '#dddddd'; // Fallback to default if not found
+        ctxt.strokeStyle = unitToGrayColorMap[p.color] || '#bbbbbb'; // Fallback to default if not found
         ctxt.lineWidth = 1
         ctxt.translate(pLower.offsetFromParentCenter[0], pLower.offsetFromParentCenter[1])
         ctxt.beginPath()
@@ -195,8 +197,10 @@ const paint = (ctxt: CanvasRenderingContext2D, props: PaintProps) => {
         const pLower = pp1[ii]
         const pUpper = pp4[ii]
 
-        ctxt.fillStyle = '#dddddd'
-        ctxt.strokeStyle = '#dddddd'
+        // ctxt.fillStyle = '#dddddd'
+        // ctxt.strokeStyle = '#bbbbbb'
+        ctxt.fillStyle = unitToGrayColorMap[p.color] || '#dddddd'; // Fallback to default if not found
+        ctxt.strokeStyle = unitToGrayColorMap[p.color] || '#bbbbbb'; // Fallback to default if not found
         ctxt.lineWidth = 1
         ctxt.translate(pLower.offsetFromParentCenter[0], pLower.offsetFromParentCenter[1])
         ctxt.beginPath()
@@ -221,8 +225,10 @@ const paint = (ctxt: CanvasRenderingContext2D, props: PaintProps) => {
         const pLower = pp2[ii]
         const pUpper = pp3[ii]
 
-        ctxt.fillStyle = '#bbbbbb'
-        ctxt.strokeStyle = '#bbbbbb'
+        // ctxt.fillStyle = '#dddddd'
+        // ctxt.strokeStyle = '#bbbbbb'
+        ctxt.fillStyle = unitToGrayColorMap[p.color] || '#dddddd'; // Fallback to default if not found
+        ctxt.strokeStyle = unitToGrayColorMap[p.color] || '#bbbbbb'; // Fallback to default if not found
         ctxt.lineWidth = 1
         ctxt.translate(pLower.offsetFromParentCenter[0], pLower.offsetFromParentCenter[1])
         ctxt.beginPath()
